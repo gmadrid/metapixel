@@ -2,7 +2,7 @@
 default_to_workspace = false
 
 [tasks.default]
-alias = "twopatternapp-bundle"
+alias = "metapixelapp-bundle"
 
 [tasks.serve]
 command = "simple-http-server"
@@ -16,11 +16,11 @@ args = ["build", "--target", "web", "--out-dir", "${pkg}"]
 dependencies = [ "define-pkg", "format" ]
 install_crate = { crate_name = "wasm-pack", binary = "wasm-pack", test_arg = "--help" }
 
-[tasks.twopatternapp-bundle]
-description = "Bundle the 'twopattern' wasm"
+[tasks.metapixelapp-bundle]
+description = "Bundle the 'metapixel' wasm"
 dependencies = [ "define-pkg", "wasm" ]
 command = "rollup"
-args = [ "./twopattern.js", "--format", "iife", "--file", "${pkg}/twopattern.js" ]
+args = [ "./metapixel.js", "--format", "iife", "--file", "${pkg}/metapixel.js" ]
 
 [tasks.define-pkg]
 private = true
@@ -56,7 +56,7 @@ dependencies = [ "make-dist-html", "make-dist-js" ]
 private = true
 dependencies = ["define-dist-env"]
 command = "sed"
-args = ["-e", "s|/pkg/|/${dist-version-subdir}/pkg-${dist-version}/|", "twopattern.html", ">", "${dist-version-subdir}/twopattern.html"]
+args = ["-e", "s|/pkg/|/${dist-version-subdir}/pkg-${dist-version}/|", "metapixel.html", ">", "${dist-version-subdir}/twopattern.html"]
 
 [tasks.make-dist-js]
 
